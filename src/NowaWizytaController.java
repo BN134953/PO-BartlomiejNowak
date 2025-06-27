@@ -92,7 +92,7 @@ public class NowaWizytaController {
         System.out.println(data + " " +godzina);
 
         //Pobieranie listy dostępnych fryzjerów z bazy danych
-        String sql = "SELECT f.id, f.imie, f.nazwisko, f.nr_telefonu FROM fryzjerzy f WHERE NOT EXISTS (SELECT 1 FROM wizyty w WHERE w.fryzjer_id = f.id AND w.data = '" + data + "' AND w.godzina = '" +  godzina + "');";
+        String sql = "SELECT f.id, f.imie, f.nazwisko, f.nr_telefonu FROM fryzjerzy f WHERE NOT EXISTS (SELECT 1 FROM wizyty w WHERE w.fryzjer_id = f.id AND w.data = '" + data + "' AND w.godzina = '" +  godzina + "' AND w.status!='odwołana');";
         ResultSet rs = BazaDanychPolaczenie.Zapytanie(sql);
 
         try {
